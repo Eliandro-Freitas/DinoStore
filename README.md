@@ -2,12 +2,14 @@
 Sistema de loja de vendas de dinossauros.
 
 
-Classes do Projeto
+Classes(Objetos) do Projeto
+
  - Funcionarios
  - Clientes
  - Produtos
 
 Telas Frontend
+
  - ConsultaCliente
  - Carregamento
  - Tela de Acesso
