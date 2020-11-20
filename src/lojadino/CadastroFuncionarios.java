@@ -57,6 +57,16 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
             //limparCamposCadastro();
         }                
     }
+            private void limpaCampo(){
+            txtcpf1.setText("");
+            txtemail1.setText("");
+            txtendereco1.setText("");
+            txtnasc1.setText("");
+            txttelefone1.setText("");
+            txtsenha.setText("");
+            txtnome1.setText("");
+         
+            }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -564,6 +574,7 @@ public class CadastroFuncionarios extends javax.swing.JFrame {
         }else {
 
             cadastraFuncionario(novoFuncionario);
+            limpaCampo();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

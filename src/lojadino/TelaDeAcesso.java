@@ -42,8 +42,7 @@ public class TelaDeAcesso extends javax.swing.JFrame {
               while(this.conectar.getResultSet().next()){
                 novoFuncionario.setCpf(this.conectar.getResultSet().getString(1));
                 novoFuncionario.setSenha(this.conectar.getResultSet().getString(2));
-                
-                
+ 
               }
                
               
@@ -57,7 +56,7 @@ public class TelaDeAcesso extends javax.swing.JFrame {
                 
                 
               }else{
-                 new TelaPrincipal().setVisible(true);
+                 new TelaPrincipal().setVisible(true);        
                 dispose();
            
                 }
