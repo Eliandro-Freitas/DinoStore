@@ -1,7 +1,15 @@
 package lojadino.Classes;
 
 public class Produtos {
+    private String codigo ="";
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
     private String nome = "";
     private String especie = "";
     private String alimentacao = "";

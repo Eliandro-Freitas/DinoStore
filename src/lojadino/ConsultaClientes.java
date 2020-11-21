@@ -103,6 +103,9 @@ public final class ConsultaClientes extends javax.swing.JFrame {
        private void deletarCliente(Cliente novoCliente){
         this.conectar.conectaBanco();
         String consultaCpf = this.consultaCpf.getText();        
+        if("".equals(novoCliente.getCpf())){
+                JOptionPane.showMessageDialog(null, "Digite um CPF válido");
+           }else{
         try {            
             this.conectar.updateSQL(
                 "DELETE FROM cadastrocliente "
@@ -110,10 +113,14 @@ public final class ConsultaClientes extends javax.swing.JFrame {
                     + "cpf = '" + consultaCpf + "'"
                 + ";"            
             );
+             if(novoCliente.getCpf()==""){
+                JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+           }
             
         } catch (Exception e) {
             System.out.println("Erro ao deletar cliente " +  e.getMessage());
             JOptionPane.showMessageDialog(null, "Erro ao deletar cliente");
+           
         }finally{
             this.conectar.fechaBanco();
            
@@ -121,10 +128,15 @@ public final class ConsultaClientes extends javax.swing.JFrame {
         }     
         
     }
+       }
       
        public void atualizarCliente(Cliente novoCliente){
         this.conectar.conectaBanco();
         String consultaCpf = this.consultaCpf.getText();
+        if("".equals(novoCliente.getCpf())){
+                JOptionPane.showMessageDialog(null, "Digite um CPF válido");
+           }
+        else{
         try {
             this.conectar.updateSQL(
                 "UPDATE cadastrocliente SET "                    
@@ -142,15 +154,19 @@ public final class ConsultaClientes extends javax.swing.JFrame {
                     + "cpf = '" + consultaCpf + "'"
                 + ";"
             );
+              
         }catch(Exception e){
             System.out.println("Erro ao atualizar cliente " +  e.getMessage());
             JOptionPane.showMessageDialog(null, "Erro ao atualizar cliente");
+           
         }finally{
             this.conectar.fechaBanco();
            
             JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso");
         }
+        
     }
+       }
     
    
     
@@ -350,19 +366,6 @@ public final class ConsultaClientes extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(consultatelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -395,7 +398,22 @@ public final class ConsultaClientes extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel11))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(consultatelefone)
+                                .addContainerGap())
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(64, 64, 64)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(43, 43, 43))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addGap(400, 400, 400)))))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,9 +618,10 @@ public final class ConsultaClientes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          int resposta = 0;
         resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja atualizar os dados?");
-        if(resposta == JOptionPane.YES_OPTION){
+       
+        if (resposta == JOptionPane.YES_OPTION){
             atualizarCliente(novoCliente); 
-        }       // TODO add your handling code here:
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
  public void preencherTabela(String Sql){
       ArrayList dados = new ArrayList();
