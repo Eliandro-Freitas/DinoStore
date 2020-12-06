@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,7 @@ import java.sql.SQLException;
 public class SQL {
     
     //atributos de conexão com o banco
-    public Connection conn = null; //variável de conexão com o banco
+    private Connection conn = null; //variável de conexão com o banco
     private Statement statement; //variável de manipulação do SQL
     public ResultSet resultSet;
     
@@ -84,7 +85,7 @@ public class SQL {
         try {
             conn.close();
             return true;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println("Erro ao fechar conexao " + e.getMessage());
             return false;
         }

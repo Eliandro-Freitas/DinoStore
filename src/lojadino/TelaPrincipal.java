@@ -6,6 +6,12 @@
 package lojadino;
 
 import Conexão.SQL;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.Timer;
 
 
 /**
@@ -40,6 +46,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telafundo = new javax.swing.JLabel();
         sistemagerenciamento = new javax.swing.JLabel();
         btexit = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jldata = new javax.swing.JLabel();
+        jlhora = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         fundoLogin = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mncadastrar = new javax.swing.JMenu();
@@ -54,6 +64,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         mnsair = new javax.swing.JMenu();
         btSair = new javax.swing.JMenuItem();
         btrelogar = new javax.swing.JMenuItem();
@@ -78,7 +89,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/func24px.png"))); // NOI18N
-        jButton4.setToolTipText("Dinossauros");
+        jButton4.setToolTipText("Funcionários");
         jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,11 +171,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btexit.setBounds(770, 10, 40, 40);
 
         getContentPane().add(internalFrame);
-        internalFrame.setBounds(10, 60, 840, 380);
+        internalFrame.setBounds(10, 20, 840, 380);
+
+        jPanel2.add(jldata);
+        jPanel2.add(jlhora);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(660, 410, 190, 30);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setText("DinoStore");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(560, 410, 90, 30);
 
         fundoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/fundo-login.jpg"))); // NOI18N
         getContentPane().add(fundoLogin);
-        fundoLogin.setBounds(0, 0, 1900, 1267);
+        fundoLogin.setBounds(0, 0, 1880, 1267);
 
         mncadastrar.setBackground(new java.awt.Color(255, 255, 255));
         mncadastrar.setText("Cadastrar");
@@ -174,6 +196,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btclientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         btclientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/cadastrar.png"))); // NOI18N
         btclientes.setText("Clientes");
         btclientes.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +206,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mncadastrar.add(btclientes);
 
+        btprodutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         btprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/stegosaurus.png"))); // NOI18N
         btprodutos.setText("Produtos");
         btprodutos.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +216,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mncadastrar.add(btprodutos);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/func.png"))); // NOI18N
         jMenuItem3.setText("Funcionários");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +230,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         mdvender.setText("Vender");
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/supermarket-cart.png"))); // NOI18N
         jMenuItem2.setText("Vender");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +256,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Consultar");
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/cadastrar.png"))); // NOI18N
         jMenuItem4.setText("Clientes");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +266,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/stegosaurus.png"))); // NOI18N
         jMenuItem6.setText("Produtos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -248,6 +276,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem6);
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/func.png"))); // NOI18N
         jMenuItem5.setText("Funcionários");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +285,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem5);
+
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/ancient-scroll16.png"))); // NOI18N
+        jMenuItem7.setText("Histórico Venda");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
 
         jMenuBar1.add(jMenu1);
 
@@ -266,6 +305,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F11, 0));
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/close1.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -275,6 +315,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnsair.add(btSair);
 
+        btrelogar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F12, 0));
         btrelogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lojadino/Imagens/refresh.png"))); // NOI18N
         btrelogar.setText("Relogar");
         btrelogar.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +329,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(873, 513));
+        setSize(new java.awt.Dimension(877, 510));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -335,11 +376,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btrelogarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        new DetalhesVenda().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-                // TODO add your handling code here:
+         new ConsultaFuncionarios().setVisible(true);       // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -359,12 +400,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       new TelaPagamento().setVisible(true); // TODO add your handling code here:
+      new DetalhesVenda().setVisible(true);  
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-  
+       Date dataSistema = new Date();		
+       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+       jldata.setText(formato.format(dataSistema));
+       
+       //hora
+       Timer timer = new Timer(1000, new TelaPrincipal.hora());
+       timer.start();
+
     }//GEN-LAST:event_formWindowOpened
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        new HistoricoVenda().setVisible(true);  // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -413,6 +465,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -421,6 +474,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jldata;
+    private javax.swing.JLabel jlhora;
     private javax.swing.JMenu mdvender;
     private javax.swing.JMenu mncadastrar;
     private javax.swing.JMenu mnferramentas;
@@ -429,4 +486,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel sistemagerenciamento;
     private javax.swing.JLabel telafundo;
     // End of variables declaration//GEN-END:variables
+
+class hora implements ActionListener {
+@Override
+public void actionPerformed(ActionEvent e) {
+Calendar now = Calendar.getInstance();
+jlhora.setText(String.format("%1$tH:%1$tM:%1$tS", now));
+}
+    }
+
 }
