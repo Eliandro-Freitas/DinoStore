@@ -490,6 +490,7 @@ public final class ConsultaDino extends javax.swing.JFrame {
 
         if (resposta == JOptionPane.YES_OPTION){
             AtualizarProduto(novoProduto);
+            preencherTabela("select * from cadastroproduto order by id_prd");
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -500,6 +501,7 @@ public final class ConsultaDino extends javax.swing.JFrame {
 
         if (resposta == JOptionPane.YES_OPTION){
             deletarProduto(novoProduto);
+            preencherTabela("select * from cadastroproduto order by id_prd");
         }
 
     }//GEN-LAST:event_jButton4ActionPerformed

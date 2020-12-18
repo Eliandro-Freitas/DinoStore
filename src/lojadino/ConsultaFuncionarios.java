@@ -437,7 +437,7 @@ public class ConsultaFuncionarios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(consultatelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addContainerGap())
@@ -573,6 +573,7 @@ public class ConsultaFuncionarios extends javax.swing.JFrame {
         resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja realmente exluir os dados?");
         if(resposta == JOptionPane.YES_OPTION){
             deletarfuncionario(novoFuncionario);
+            preencherTabela("select * from cadastrofuncionario order by cpf_func");
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -585,6 +586,7 @@ public class ConsultaFuncionarios extends javax.swing.JFrame {
         resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja atualizar os dados?");
         if(resposta == JOptionPane.YES_OPTION){
             AtualizarFuncionario(novoFuncionario);
+            preencherTabela("select * from cadastrofuncionario order by cpf_func");
         }         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

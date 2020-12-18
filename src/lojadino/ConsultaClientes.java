@@ -609,6 +609,7 @@ public final class ConsultaClientes extends javax.swing.JFrame {
         resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja realmente exluir os dados?");
         if(resposta == JOptionPane.YES_OPTION){
             deletarCliente(novoCliente);
+            preencherTabela("select * from cadastrocliente order by nome");  
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -622,6 +623,7 @@ public final class ConsultaClientes extends javax.swing.JFrame {
        
         if (resposta == JOptionPane.YES_OPTION){
             atualizarCliente(novoCliente); 
+            preencherTabela("select * from cadastrocliente order by nome");  
         }
     }//GEN-LAST:event_jButton3ActionPerformed
  public void preencherTabela(String Sql){
