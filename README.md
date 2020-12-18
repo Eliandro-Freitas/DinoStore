@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# DinoStore
 Sistema de loja de vendas de dinossauros.
 
@@ -64,3 +65,12 @@ DINOSTORE
 ![Diagrama Entidade e Relacionamento](https://github.com/juniorperon/DinoStore/blob/main/DER%20-%20DinoStore.png)
 
 
+=======
+# DinoStore
+
+Feito com Java e banco de dados local MySQL.
+Todo o projeto está funcionando 100%
+Sistema feito para um projeto universitário, onde simula uma loja que comercializa dinossauros
+Com telas de cadastro e consulta de clientes, produtos e funcionários
+As consultas tem operações de remoção e alteração de dados
+>>>>>>> 3343cbfb9e8fd0ccc72a25c2a834712c90a34124
